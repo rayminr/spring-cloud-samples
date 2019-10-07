@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Created by sanny on 2019/10/7.
  */
 @Component
-@FeignClient(value = "eureka-producer",configuration = FeignConfig.class)
+@FeignClient(value = "eureka-producer",configuration = FeignConfig.class,fallback = HelloHystrix.class)
 public interface EurekaFeignClient {
 
     /**

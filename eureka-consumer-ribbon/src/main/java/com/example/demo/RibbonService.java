@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -17,8 +18,13 @@ public class RibbonService {
     @Autowired
     private LoadBalancerClient loadBalancer;
 
+    @HystrixCommand(fallbackMethod = "helloError")
     public String hello(String name) {
         return restTemplate.getForObject("http://eureka-producer/hello?name=" + name, String.class);
+    }
+
+    public String helloError(String name) {
+        return "sorry " + name + ", there is a error on hello method!";
     }
 
     public String helloRibbon() {
