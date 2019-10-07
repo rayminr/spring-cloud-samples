@@ -1,0 +1,23 @@
+##single server mode
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+##multi servers mode
+#spring:
+#  profiles:
+#    active: native
+#  application:
+#    name: peer-cluster
+
+##start servers
+#java -jar eureka-server-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer1
+#java -jar eureka-server-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer2
+
