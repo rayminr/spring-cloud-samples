@@ -1,1 +1,2 @@
-conf.env=test
+conf：
+  env：test
