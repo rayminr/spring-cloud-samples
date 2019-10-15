@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: turbine-stream-rabbitmq
+server:
+  port: 8790
+management:
+  port: 8791
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+turbine:
+  app-config: eureka-consumer-feign
+  cluster-name-expression: new String("default")
+  combine-host-port: true
